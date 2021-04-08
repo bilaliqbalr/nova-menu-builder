@@ -36,7 +36,6 @@
 
 <script>
 import _ from 'lodash';
-import beautify from 'js-beautify';
 
 import api from '../api';
 
@@ -146,7 +145,7 @@ export default {
     async editMenu(item) {
       const menuItem = (await api.getMenuItem(item.id)).data;
       menuItem.parameters = menuItem.parameters
-        ? beautify(JSON.stringify(menuItem.parameters), { indent_size: 2 })
+        ? JSON.stringify(menuItem.parameters)
         : '';
       this.update = menuItem.id;
       this.newItem = menuItem;
